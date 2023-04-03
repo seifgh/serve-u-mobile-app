@@ -1,0 +1,3 @@
+This folder should contain any global utilities/helpers functions that can be used multiple times throughout the application.
+No jsx functions
+EXAMPLES: randomizeArray, cacheFile, checkIfTokenExpired, calcs ...

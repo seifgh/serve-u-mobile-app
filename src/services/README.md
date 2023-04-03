@@ -1,0 +1,3 @@
+This folder should contain any handled task that are not directly related to UI.
+Any service is here should not be responsible to a specific module business logic.
+EXAMPLES: Network service, local storage service, local notifications schedule service, logger service...

@@ -1,5 +1,5 @@
 import React from 'react';
-import {RootContainer} from './containers';
+import {RootContainer} from './components/containers';
 import NavigationProvider from './navigation/navigation.provider';
 import './locales';
 

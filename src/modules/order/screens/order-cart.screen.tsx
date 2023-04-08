@@ -1,4 +1,4 @@
-import {BottomTabBarScreenContainer} from '@src/containers';
+import {BottomTabBarScreenContainer} from '@src/components/containers';
 import React, {FC} from 'react';
 import {Text} from '../../../components';
 import {NavigationScreenName} from '../../../constants/enums';

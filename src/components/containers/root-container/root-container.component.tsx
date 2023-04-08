@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View} from '../../components/react-native';
+import {View} from '../../react-native';
 import {useStyles} from './root-container.style';
 import {RootContainerProps} from './root-container.type';
 

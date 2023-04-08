@@ -2,5 +2,9 @@
   "titles": {
     "menu": "Menu",
     "order": "Order"
+  },
+  "qrCodeScannerScreen": {
+    "header_text": "1 - Choose your table\n2 - Scan table QR code\n3 - Yup, Choose your order",
+    "bottom_text": "Press the button to scan your\n table’s QR code"
   }
 }

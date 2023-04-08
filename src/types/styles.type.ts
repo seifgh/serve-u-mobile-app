@@ -30,3 +30,9 @@ export type StyledSizes = Sizes & {
   screen: ScaledSize;
   statusBarHeight: number;
 };
+export type DimensionValue = number | `${number}%`;
+
+export type DimensionsStyle = {
+  height: DimensionValue;
+  width: DimensionValue;
+};

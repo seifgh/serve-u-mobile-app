@@ -1,3 +1,10 @@
-import {Text, View, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Pressable,
+  ScrollView,
+} from 'react-native';
 
-export {View, Text, TouchableOpacity};
+export {View, Text, TouchableOpacity, Image, Pressable, ScrollView};

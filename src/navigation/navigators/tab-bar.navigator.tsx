@@ -2,10 +2,10 @@ import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import {BagIcon, MenuIcon} from '@src/assets/icons';
 import {BottomTabBar} from '@src/components';
+import {BagIcon, MenuIcon} from '@src/components/icons';
 import {NavigationScreenName} from '@src/constants/enums';
-import {useTranslation} from '@src/hooks/i18n';
+import {useTranslate} from '@src/hooks/i18n';
 import {OrderCartScreen, QrCodeScannerScreen} from '@src/modules';
 import {TabBarStackParamList} from '@src/types';
 import React, {useCallback} from 'react';
@@ -14,7 +14,7 @@ const TabBar = createBottomTabNavigator<TabBarStackParamList>();
 
 const TabBarNavigator = () => {
   // utils
-  const {t} = useTranslation();
+  const t = useTranslate('titles');
 
   // render
   const renderCustomTabBar = useCallback(
@@ -30,7 +30,7 @@ const TabBarNavigator = () => {
         name={NavigationScreenName.RESTAURANT_QR_SCANNER}
         component={QrCodeScannerScreen}
         options={{
-          title: t('titles.menu') as string,
+          title: t('menu'),
           tabBarIcon: MenuIcon,
         }}
       />
@@ -38,7 +38,7 @@ const TabBarNavigator = () => {
         name={NavigationScreenName.ORDER_CART}
         component={OrderCartScreen}
         options={{
-          title: t('titles.order') as string,
+          title: t('order'),
           tabBarIcon: BagIcon,
         }}
       />

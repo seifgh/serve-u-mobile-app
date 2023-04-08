@@ -8,10 +8,10 @@ i18next
     compatibilityJSON: 'v3',
     resources: {
       en: {
-        translation: english,
+        ...english,
       },
       fr: {
-        translation: french,
+        ...french,
       },
     },
     lng: 'en',

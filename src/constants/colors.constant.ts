@@ -14,3 +14,18 @@ export const LIGHT_COLORS: Colors = {
   textLight: '#F8F8F8',
 };
 export const DARK_COLORS: Colors = {...LIGHT_COLORS};
+export const LIGHT_INVERTED_COLORS: Colors = {
+  primary: LIGHT_COLORS.background,
+  success: LIGHT_COLORS.white,
+  error: LIGHT_COLORS.white,
+  white: LIGHT_COLORS.primary,
+
+  background: LIGHT_COLORS.primary,
+  borderGray: LIGHT_COLORS.text,
+
+  text: LIGHT_COLORS.white,
+  textGray: LIGHT_COLORS.text,
+  textLight: LIGHT_COLORS.text,
+};
+
+export const DARK_INVERTED_COLORS: Colors = {...LIGHT_INVERTED_COLORS};

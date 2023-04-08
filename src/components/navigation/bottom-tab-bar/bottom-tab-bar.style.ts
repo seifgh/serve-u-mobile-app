@@ -11,7 +11,7 @@ export const useStyles = (_: Partial<BottomTabBarProps>) => {
   return StyleSheet.create({
     container: {
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
       height: styledSizes.bottomTabBarHeight - BORDER_WIDTH,

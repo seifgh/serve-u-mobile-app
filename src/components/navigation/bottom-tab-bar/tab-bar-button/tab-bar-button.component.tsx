@@ -1,4 +1,5 @@
-import {Text, TouchableOpacity} from '@src/components/react-native';
+import {StyledText} from '@src/components/common';
+import {TouchableOpacity} from '@src/components/react-native';
 import React, {FC} from 'react';
 import {useStyles} from './tab-bar-button.style';
 import {TabBarButtonProps} from './tab-bar-button.type';
@@ -20,7 +21,7 @@ const TabBarButton: FC<TabBarButtonProps> = props => {
       style={styles.container}
       onPress={props.onPress}>
       {props.icon?.({color: styles.icon.color})}
-      <Text style={styles.title}>{props.title}</Text>
+      <StyledText style={styles.title} size="xs" content={props.title} />
     </TouchableOpacity>
   );
 };

@@ -1,5 +1,7 @@
-import {ScrollViewProps} from 'react-native/types';
+import {FlexStyle, ScrollViewProps} from 'react-native';
 
 export type ScrollViewContainerProps = Partial<ScrollViewProps> & {
-  centerContent?: boolean;
+  alignItems?: FlexStyle['alignItems'];
+  justifyContent?: FlexStyle['justifyContent'];
+  alignContent?: FlexStyle['alignContent'];
 };

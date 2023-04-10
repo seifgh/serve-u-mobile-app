@@ -8,6 +8,12 @@ export const logoImageAsset: ImageAsset = {
 
 export const qrCodeImageAsset: ImageAsset = {
   src: require('./qr-code.png'),
-  actualHeight: 250,
   actualWidth: 250,
+  actualHeight: 250,
+};
+
+export const emptyOrderImageAsset: ImageAsset = {
+  src: require('./empty-order.png'),
+  actualWidth: 300,
+  actualHeight: 164,
 };

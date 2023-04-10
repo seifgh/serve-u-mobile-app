@@ -7,6 +7,7 @@ export type Colors = {
   white: string;
 
   background: string;
+  modalBackground: string;
 
   borderGray: string;
 

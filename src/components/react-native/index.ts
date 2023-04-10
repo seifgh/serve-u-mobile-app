@@ -5,6 +5,19 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Modal,
+  Animated,
 } from 'react-native';
 
-export {View, Text, TouchableOpacity, Image, Pressable, ScrollView};
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+export {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Pressable,
+  ScrollView,
+  Modal,
+  Animated,
+  AnimatedPressable,
+};

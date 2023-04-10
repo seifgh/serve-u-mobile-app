@@ -1,25 +1,27 @@
 import {qrCodeImageAsset} from '@src/assets';
-import {Logo, StyledImage, StyledText} from '@src/components';
-import Spacer from '@src/components/common/spacer/spacer.component';
-import {StyledButton} from '@src/components/common/styled-button';
-import {BottomTabBarScreenContainer} from '@src/components/containers';
-import {ScrollViewContainer} from '@src/components/containers/scroll-view-container';
-import {useStyledSizes} from '@src/hooks';
-import {useTranslate} from '@src/hooks/i18n';
+import {
+  BottomTabBarScreenContainer,
+  Logo,
+  ScrollViewContainer,
+  Spacer,
+  StyledImage,
+  StyledText,
+} from '@src/components';
+import {useStyledSizes, useTranslate} from '@src/hooks';
 import React from 'react';
+import {QrCodeCameraScanner} from '../containers';
 
 const QrCodeScannerScreen = () => {
   // utils
   const {
     screen: {width: screenWidth},
   } = useStyledSizes();
-
   const t = useTranslate('qrCodeScannerScreen');
 
   // render
   return (
     <BottomTabBarScreenContainer>
-      <ScrollViewContainer centerContent>
+      <ScrollViewContainer alignItems="center">
         <Spacer height={24} />
         <Logo size="md" />
         <Spacer height={24} />
@@ -29,13 +31,13 @@ const QrCodeScannerScreen = () => {
           align="center"
           content={t('header_text')}
         />
-        <Spacer height={24} />
+        <Spacer height={32} />
         <StyledImage
           image={qrCodeImageAsset}
           width={250}
           maxWidth={screenWidth * 0.8}
         />
-        <Spacer height={24} />
+        <Spacer height={32} />
         <StyledText
           size="md"
           color="textGray"
@@ -43,7 +45,8 @@ const QrCodeScannerScreen = () => {
           content={t('bottom_text')}
         />
         <Spacer height={24} />
-        <StyledButton content="Scan" color="primary" size="lg" isFlat />
+
+        <QrCodeCameraScanner />
         <Spacer height={36} />
       </ScrollViewContainer>
     </BottomTabBarScreenContainer>

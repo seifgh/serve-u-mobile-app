@@ -7,6 +7,8 @@ export const LIGHT_COLORS: Colors = {
   white: '#FFFFFF',
 
   background: '#F8F8F8',
+  modalBackground: 'rgba(0, 0, 0, 0.25)',
+
   borderGray: '#E4E4E4',
 
   text: '#343A40',
@@ -21,6 +23,8 @@ export const LIGHT_INVERTED_COLORS: Colors = {
   white: LIGHT_COLORS.primary,
 
   background: LIGHT_COLORS.primary,
+  modalBackground: LIGHT_COLORS.text,
+
   borderGray: LIGHT_COLORS.text,
 
   text: LIGHT_COLORS.white,

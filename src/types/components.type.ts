@@ -10,6 +10,14 @@ export type SvgIconProps = {
   color: string;
 };
 
+export type ContainerContentPosition =
+  | 'tl'
+  | 'tr'
+  | 'bl'
+  | 'br'
+  | 'tc'
+  | 'bc'
+  | 'center';
 export type SizeProp = 'sm' | 'md' | 'lg';
 export type TextSizeProp = 'xs' | SizeProp | 'xl' | '2xl' | '3xl';
 export type TextWeightProp = 'light' | 'base' | 'semi-bold' | 'bold';

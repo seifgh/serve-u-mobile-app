@@ -1,15 +1,15 @@
 import {BottomTabBarScreenContainer} from '@src/components/containers';
 import React, {FC} from 'react';
-import {Text} from '../../../components';
 import {NavigationScreenName} from '../../../constants/enums';
 import {RootNavigationScreenProps} from '../../../types';
+import {EmptyOrderContainer} from '../containers';
 
 const OrderCartScreen: FC<
   RootNavigationScreenProps<NavigationScreenName.ORDER_CART>
 > = () => {
   return (
     <BottomTabBarScreenContainer>
-      <Text>Order cart screen</Text>
+      <EmptyOrderContainer />
     </BottomTabBarScreenContainer>
   );
 };

@@ -7,7 +7,11 @@
     "header_text": "1 - Choose your table\n2 - Scan table QR code\n3 - Yup, Choose your order",
     "bottom_text": "Press the button to scan your\n table’s QR code",
     "scan_btn_text": "Scan",
-    "scan_qr_code_text": "Scan the QR code with your\ncamera"
+    "scan_qr_code_text": "Scan the QR code with your\ncamera",
+    "camera_permission_alert": {
+      "title": "Camera error",
+      "description": "Please accept camera permissions to scan the qr code."
+    }
   },
   "orderScreen": {
     "empty_order": {

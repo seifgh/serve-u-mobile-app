@@ -24,6 +24,7 @@ const QrCodeScannerScreen = () => {
       <ScrollViewContainer alignItems="center">
         <Spacer height={24} />
         <Logo size="md" />
+
         <Spacer height={24} />
         <StyledText
           size="md"
@@ -31,12 +32,14 @@ const QrCodeScannerScreen = () => {
           align="center"
           content={t('header_text')}
         />
+
         <Spacer height={32} />
         <StyledImage
           image={qrCodeImageAsset}
           width={250}
           maxWidth={screenWidth * 0.8}
         />
+
         <Spacer height={32} />
         <StyledText
           size="md"

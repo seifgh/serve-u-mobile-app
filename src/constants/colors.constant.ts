@@ -3,7 +3,7 @@ import {Colors} from '../types';
 export const LIGHT_COLORS: Colors = {
   primary: '#6C63FF',
   success: '#06AE2B',
-  error: '#06AE2B',
+  error: '#E95454',
   white: '#FFFFFF',
 
   background: '#F8F8F8',

@@ -10,5 +10,13 @@ module.exports = {
         },
       },
     ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@dotenv',
+        safe: false,
+        allowUndefined: false,
+      },
+    ],
   ],
 };

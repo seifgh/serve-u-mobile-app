@@ -1,9 +1,10 @@
 import {BottomDrawer, Spacer, StyledText, View} from '@src/components';
 import {StyledButton} from '@src/components/common/styled-button';
 import {useTranslate} from '@src/hooks';
-import React, {useEffect, useState} from 'react';
+import {toasterUtil} from '@src/utils';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
-import {useStyles} from './qr-code-camera-scanner.syle';
+import {useStyles} from './qr-code-camera-scanner.style';
 
 const QrCodeCameraScanner = () => {
   // utils
@@ -13,20 +14,37 @@ const QrCodeCameraScanner = () => {
   // state
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  // styles
-  const styles = useStyles();
+  // actions
+  const handleCameraPermissions = useCallback(async () => {
+    if (isVisible) {
+      const permissionResult = await Camera.requestCameraPermission();
+      if (permissionResult === 'denied') {
+        setIsVisible(false);
+        toasterUtil.error({
+          text1: t('camera_permission_alert.title'),
+          text2: t('camera_permission_alert.description'),
+        });
+      }
+    }
+  }, [isVisible, t]);
+
+  const handleBtnPress = () => {
+    setIsVisible(true);
+  };
+
+  const handleOnClose = () => {
+    setIsVisible(false);
+  };
 
   // listeners
   useEffect(() => {
-    if (isVisible) {
-      (async () => {
-        const permissionResult = await Camera.requestCameraPermission();
-        if (permissionResult === 'denied') {
-        }
-      })();
-    }
-  }, [isVisible]);
+    handleCameraPermissions();
+  }, [handleCameraPermissions]);
 
+  // styles
+  const styles = useStyles();
+
+  // render
   return (
     <>
       <StyledButton
@@ -34,10 +52,10 @@ const QrCodeCameraScanner = () => {
         color="primary"
         size="md"
         isFlat
-        onPress={() => setIsVisible(true)}
+        onPress={handleBtnPress}
       />
 
-      <BottomDrawer isVisible={isVisible} onClose={() => setIsVisible(false)}>
+      <BottomDrawer isVisible={isVisible} onClose={handleOnClose}>
         <View style={styles.cameraContainer}>
           {device.back ? (
             <Camera

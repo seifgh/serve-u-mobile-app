@@ -5,3 +5,4 @@ export * from './styles.type';
 export * from './assets.type';
 export * from './global.type';
 export * from './api.type';
+export * from './entities.type';

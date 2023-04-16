@@ -30,7 +30,6 @@ export const useStyles = (props: StyledImageProps) => {
   return StyleSheet.create({
     image: {
       ...getImageDimensions(props),
-      ...props.style,
     },
   });
 };

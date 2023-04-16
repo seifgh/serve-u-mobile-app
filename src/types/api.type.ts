@@ -15,9 +15,15 @@ export type ApiEndpoint = BaseApiEndpoint & {
 
 export type ApiRequestConfig = {
   endpoint: ApiEndpoint;
-  body: Record<string, any>;
-  urlParams: Record<string, any>;
-  queryParams: Record<string, any>;
-  showLoader: boolean;
-  showToastError: boolean;
+  body?: Record<string, any>;
+  urlParams?: Record<string, any>;
+  queryParams?: Record<string, any>;
+  showLoader?: boolean;
+  showToastError?: boolean;
+};
+
+export type ApiResponse<T> = {
+  data: T;
+  statusCode: number;
+  message: string;
 };

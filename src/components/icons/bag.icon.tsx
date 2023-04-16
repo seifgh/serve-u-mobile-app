@@ -1,10 +1,10 @@
 import {SvgXml} from 'react-native-svg';
 import {IconComponent} from '../../types';
 
-const BagIcon: IconComponent = ({color}) =>
+const BagIcon: IconComponent = ({color, width = 24, height = 24}) =>
   SvgXml({
     xml: `
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="${width}" height="${height}"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8.80994 2L5.18994 5.63" stroke="${color}" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M15.1899 2L18.8099 5.63" stroke="${color}" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M2 7.84998C2 5.99998 2.99 5.84998 4.22 5.84998H19.78C21.01 5.84998 22 5.99998 22 7.84998C22 9.99998 21.01 9.84998 19.78 9.84998H4.22C2.99 9.84998 2 9.99998 2 7.84998Z" stroke="${color}" stroke-width="1.5"/>

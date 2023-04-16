@@ -5,6 +5,7 @@ export const LIGHT_COLORS: Colors = {
   success: '#06AE2B',
   error: '#E95454',
   white: '#FFFFFF',
+  price: '#10B981',
 
   background: '#F8F8F8',
   modalBackground: 'rgba(0, 0, 0, 0.25)',
@@ -21,6 +22,7 @@ export const LIGHT_INVERTED_COLORS: Colors = {
   success: LIGHT_COLORS.white,
   error: LIGHT_COLORS.white,
   white: LIGHT_COLORS.primary,
+  price: LIGHT_COLORS.text,
 
   background: LIGHT_COLORS.primary,
   modalBackground: LIGHT_COLORS.text,

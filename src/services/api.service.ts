@@ -1,6 +1,6 @@
 import {API_BASE_URL} from '@src/constants/api.constant';
 import {IRestApiService} from '@src/interfaces';
-import {ApiRequestConfig} from '@src/types';
+import {ApiRequestConfig, ApiResponse} from '@src/types';
 import {schemaUtil, URIUtil} from '@src/utils';
 import axios, {
   AxiosError,
@@ -20,18 +20,18 @@ class ApiService implements IRestApiService {
 
   sendHttpRequest<T>(config: ApiRequestConfig): Promise<T> {
     return new Promise<T>((resolve, reject) => {
-      this.httpClient<T>(
+      this.httpClient<ApiResponse<T>>(
         this.transformRequestConfigsToAxiosRequestConfig(config),
       )
         .then(response => {
-          resolve(this.handleResponseSuccess(response));
+          resolve(this.handleResponseSuccess<T>(response));
         })
         .catch(err => reject(this.handleResponseError(err)));
     });
   }
 
-  private handleResponseSuccess<T>(response: AxiosResponse<T>): T {
-    return response.data;
+  private handleResponseSuccess<T>(response: AxiosResponse<ApiResponse<T>>): T {
+    return response.data.data;
   }
 
   private handleResponseError(error: AxiosError) {

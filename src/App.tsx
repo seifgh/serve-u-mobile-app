@@ -1,13 +1,17 @@
 import React from 'react';
+import {QueryClient, QueryClientProvider} from 'react-query';
 import {RootContainer, ToasterContainer} from './components/containers';
+import './locales';
 import NavigationProvider from './navigation/navigation.provider';
 
-import './locales';
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <RootContainer>
-      <NavigationProvider />
+      <QueryClientProvider client={queryClient}>
+        <NavigationProvider />
+      </QueryClientProvider>
       <ToasterContainer />
     </RootContainer>
   );

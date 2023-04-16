@@ -28,11 +28,10 @@ export const URIUtil = {
     if (URIParams === undefined) {
       return URI;
     }
-
     let formattedURI = URI;
     Object.keys(URIParams).forEach(key => {
       const paramValue = URIParams[key];
-      formattedURI.replace(`:${key}`, paramValue.toString());
+      formattedURI = formattedURI.replace(`:${key}`, paramValue.toString());
     });
 
     return formattedURI;

@@ -1,9 +1,13 @@
-import {ColorProp, SizeProp} from '@src/types';
+import {ColorProp, DirectionProp, IconComponent, SizeProp} from '@src/types';
 import {TouchableOpacityProps} from 'react-native';
 
 export type StyledButtonProps = TouchableOpacityProps & {
-  content: string;
+  icon?: IconComponent;
+  content?: string;
   color?: ColorProp;
+  textColor?: ColorProp;
   size?: SizeProp;
+  iconDirection?: DirectionProp;
   isFlat?: boolean;
+  hasBorder?: boolean;
 };

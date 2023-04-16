@@ -18,7 +18,7 @@ const EmptyOrderContainer = () => {
 
   // actions
   const handleBtnPress = () => {
-    navigation.navigate(NavigationScreenName.RESTAURANT_QR_SCANNER);
+    navigation.navigate(NavigationScreenName.RESTAURANT_STACK);
   };
 
   // render

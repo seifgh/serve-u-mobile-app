@@ -2,10 +2,10 @@ import {DeepPrimitiveTypeSchema} from '@src/types';
 
 export const schemaUtil = {
   mapRecordBySchema<T extends Record<string, any> = {}>(
-    record: T | Record<string, any>,
+    record?: T | Record<string, any>,
     schema?: DeepPrimitiveTypeSchema,
   ): T | Record<string, any> | undefined {
-    if (schema === undefined) {
+    if (schema === undefined || record === undefined) {
       return undefined;
     }
     const mappedObject: Record<string, any> = {};

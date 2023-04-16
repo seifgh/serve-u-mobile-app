@@ -9,4 +9,5 @@ export type StyledTextProps = {
   lineHeight?: number;
   align?: TextStyle['textAlign'];
   content: string | string[];
+  numberOfLines?: number;
 };

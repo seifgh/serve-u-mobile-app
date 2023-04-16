@@ -22,25 +22,87 @@ const CONTAINER_STYLES_BY_SIZE: Record<SizeProp, ViewStyle> = {
   },
 };
 
+const ICON_ONLY_CONTAINER_STYLES_BY_SIZE: Record<SizeProp, ViewStyle> = {
+  sm: {
+    padding: 6,
+    borderRadius: 12,
+  },
+  md: {
+    padding: 8,
+    borderRadius: 16,
+  },
+  lg: {
+    padding: 12,
+    borderRadius: 20,
+  },
+};
+
+const ICON_DIMENSION_BY_SIZE: Record<SizeProp, number> = {
+  sm: 24,
+  md: 28,
+  lg: 32,
+};
+
 export const useStyles = (props: StyledButtonProps) => {
   const styledColors = useStyledColors();
   const styledInvertedColors = useStyledInvertedColors();
-  const {color = 'primary', size = 'md', isFlat} = props;
+  const {
+    color = 'primary',
+    textColor,
+    size = 'md',
+    isFlat,
+    iconDirection = 'r',
+    hasBorder,
+  } = props;
+
+  // computed
+  const hasIcon = !!props.icon;
+  const hasText = !!props.content;
+  const isIconTextBtn = hasIcon && hasText;
+  const isIconBtn = hasIcon && !hasText;
+  const hastLeftIcon = isIconTextBtn && iconDirection === 'l';
+  const hasRightIcon = isIconTextBtn && iconDirection === 'r';
+
+  // styles
+  const iconDimensions = ICON_DIMENSION_BY_SIZE[size];
+  const textColorStyle = textColor
+    ? styledColors[textColor]
+    : styledInvertedColors[color];
+  const containerStylesBySize = isIconBtn
+    ? ICON_ONLY_CONTAINER_STYLES_BY_SIZE[size]
+    : CONTAINER_STYLES_BY_SIZE[size];
+  const flatStyles = isFlat
+    ? {
+        minWidth: '60%',
+      }
+    : null;
+
+  const borderStyles = hasBorder
+    ? {
+        borderWidth: 2,
+        borderColor: styledColors.borderGray,
+      }
+    : null;
 
   return StyleSheet.create({
     container: {
+      flexDirection: 'row',
       backgroundColor: styledColors[color],
       justifyContent: 'center',
       alignItems: 'center',
-      ...CONTAINER_STYLES_BY_SIZE[size],
-      ...(isFlat
-        ? {
-            minWidth: '60%',
-          }
-        : {}),
+      ...containerStylesBySize,
+      ...flatStyles,
+      ...borderStyles,
     },
     text: {
-      color: styledInvertedColors[color],
+      color: textColorStyle,
+      paddingRight: hasRightIcon ? 12 : 0,
+      paddingLeft: hastLeftIcon ? 12 : 0,
+    },
+    icon: {
+      color: textColorStyle,
+      width: iconDimensions,
+      height: iconDimensions,
     },
   });
 };

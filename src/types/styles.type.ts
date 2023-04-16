@@ -5,6 +5,7 @@ export type Colors = {
   success: string;
   error: string;
   white: string;
+  price: string;
 
   background: string;
   modalBackground: string;

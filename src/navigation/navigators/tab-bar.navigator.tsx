@@ -6,9 +6,10 @@ import {BottomTabBar} from '@src/components';
 import {BagIcon, MenuIcon} from '@src/components/icons';
 import {NavigationScreenName} from '@src/constants/enums';
 import {useTranslate} from '@src/hooks/i18n';
-import {OrderCartScreen, QrCodeScannerScreen} from '@src/modules';
+import {OrderCartScreen} from '@src/modules';
 import {TabBarStackParamList} from '@src/types';
 import React, {useCallback} from 'react';
+import RestaurantNavigator from './restaurant.navigator';
 
 const TabBar = createBottomTabNavigator<TabBarStackParamList>();
 
@@ -27,8 +28,8 @@ const TabBarNavigator = () => {
       tabBar={renderCustomTabBar}
       screenOptions={{headerShown: false}}>
       <TabBar.Screen
-        name={NavigationScreenName.RESTAURANT_QR_SCANNER}
-        component={QrCodeScannerScreen}
+        name={NavigationScreenName.RESTAURANT_STACK}
+        component={RestaurantNavigator}
         options={{
           title: t('menu'),
           tabBarIcon: MenuIcon,

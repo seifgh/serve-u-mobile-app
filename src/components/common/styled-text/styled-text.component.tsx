@@ -10,14 +10,21 @@ const StyledText: FC<StyledTextProps> = props => {
     return (
       <>
         {props.content.map((text, index) => (
-          <Text key={index} style={styles.text}>
+          <Text
+            key={index}
+            style={styles.text}
+            numberOfLines={props.numberOfLines}>
             {text}
           </Text>
         ))}
       </>
     );
   }
-  return <Text style={styles.text}>{props.content}</Text>;
+  return (
+    <Text style={styles.text} numberOfLines={props.numberOfLines}>
+      {props.content}
+    </Text>
+  );
 };
 
 export default StyledText;

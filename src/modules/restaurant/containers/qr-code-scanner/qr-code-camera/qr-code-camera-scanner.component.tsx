@@ -1,15 +1,30 @@
+import {useNavigation} from '@react-navigation/native';
 import {BottomDrawer, Spacer, StyledText, View} from '@src/components';
 import {StyledButton} from '@src/components/common/styled-button';
-import {useTranslate} from '@src/hooks';
+import {NavigationScreenName, QueryKey} from '@src/constants/enums';
+import {useTimeoutWithClear, useTranslate} from '@src/hooks';
+import {restaurantService} from '@src/modules/restaurant/services';
+import {RestaurantEntity} from '@src/modules/restaurant/types';
+import {RootNavigationProps} from '@src/types';
 import {toasterUtil} from '@src/utils';
 import React, {useCallback, useEffect, useState} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
+import {useQuery} from 'react-query';
 import {useStyles} from './qr-code-camera-scanner.style';
 
 const QrCodeCameraScanner = () => {
   // utils
+  const navigation = useNavigation<RootNavigationProps>();
   const t = useTranslate('qrCodeScannerScreen');
   const device = useCameraDevices();
+  const [fetchTimeout, clearFetchTimeout] = useTimeoutWithClear();
+  const {refetch} = useQuery<RestaurantEntity>(QueryKey.GET_RESTAURANT, {
+    enabled: false,
+    queryFn: () => restaurantService.getOne('15'),
+    onSuccess: data => {
+      handleFoundRestaurant(data);
+    },
+  });
 
   // state
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -33,13 +48,25 @@ const QrCodeCameraScanner = () => {
   };
 
   const handleOnClose = () => {
+    clearFetchTimeout();
     setIsVisible(false);
+  };
+
+  const handleFoundRestaurant = (_: RestaurantEntity) => {
+    setIsVisible(false);
+    navigation.navigate(NavigationScreenName.RESTAURANT_MENU);
   };
 
   // listeners
   useEffect(() => {
     handleCameraPermissions();
   }, [handleCameraPermissions]);
+
+  useEffect(() => {
+    if (isVisible) {
+      fetchTimeout(refetch, 1000);
+    }
+  }, [isVisible, refetch, fetchTimeout]);
 
   // styles
   const styles = useStyles();

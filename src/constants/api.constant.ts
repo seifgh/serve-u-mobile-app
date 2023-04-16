@@ -1,16 +1,14 @@
 //@ts-ignore
-import {API_URL} from '@dotenv';
+import {API_HOST} from '@dotenv';
 import {ApiEndpoint} from '@src/types';
-import {schemaUtil} from '@src/utils/schema.util';
 
-export const API_BASE_URL = `${API_URL}/v1/mobile` as const;
-
+export const API_BASE_URL = `${'http://192.168.1.23:3001'}/api/mobile` as const;
 export const API_ENDPOINTS: Record<string, ApiEndpoint> = {
   GET_RESTAURANT: {
     url: '/restaurants/:id',
     method: 'GET',
     urlParamsSchema: {
-      id: 'number',
+      id: 'string',
     },
   },
   SEND_ORDER: {
@@ -26,16 +24,3 @@ export const API_ENDPOINTS: Record<string, ApiEndpoint> = {
     },
   },
 };
-
-console.log(
-  schemaUtil.mapRecordBySchema(
-    {
-      id: '1',
-      quantity: 3,
-    },
-    {
-      id: 'string',
-      quantity: 'number',
-    },
-  ),
-);

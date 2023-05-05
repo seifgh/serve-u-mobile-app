@@ -7,10 +7,11 @@ import {
 } from '@src/components';
 import {StyledButton} from '@src/components/common/styled-button';
 import {BagIcon} from '@src/components/icons';
+import {orderStoreActions} from '@src/store';
 import React, {FC} from 'react';
 import {
-  MENU_ITEM_CONTAINER_HEIGHT,
   IMAGE_ACTUAL_DIMENSIONS,
+  MENU_ITEM_CONTAINER_HEIGHT,
   useStyles,
 } from './menu-item-card.style';
 import {MenuItemCardProps} from './menu-item-card.type';
@@ -18,6 +19,11 @@ import {MenuItemCardProps} from './menu-item-card.type';
 const MenuItemCard: FC<MenuItemCardProps> = props => {
   const {image, name, price} = props;
   const styles = useStyles(props);
+  const addMenuItem = orderStoreActions.useAddMenuIem();
+
+  const handleBagBtnPress = () => {
+    addMenuItem(props);
+  };
 
   return (
     <FlexContainer
@@ -47,7 +53,11 @@ const MenuItemCard: FC<MenuItemCardProps> = props => {
           flexWrap="nowrap"
           alignItems="flex-end">
           <PriceTag content={price} />
-          <StyledButton icon={BagIcon} size={'sm'} />
+          <StyledButton
+            onPress={handleBagBtnPress}
+            icon={BagIcon}
+            size={'sm'}
+          />
         </FlexContainer>
       </FlexContainer>
     </FlexContainer>

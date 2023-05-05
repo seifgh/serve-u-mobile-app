@@ -19,7 +19,7 @@ const BottomTabBar: FC<BottomTabBarProps> = props => {
   // render
   const renderButtons = routes.map((route, index) => {
     const {
-      options: {title, tabBarIcon},
+      options: {title, tabBarIcon, tabBarBadge},
     } = descriptors[route.key];
     return (
       <TabBarButton
@@ -27,6 +27,7 @@ const BottomTabBar: FC<BottomTabBarProps> = props => {
         title={title || route.name}
         icon={tabBarIcon ? (tabBarIcon as IconComponent) : undefined}
         isFocused={index === focusedIndex}
+        tabBarBadge={tabBarBadge}
         onPress={() => navigation.navigate(route.name)}
       />
     );

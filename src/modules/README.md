@@ -1,6 +1,9 @@
 This folder should includes features or modules that represent distinct areas of functionality in your app.
 Each feature should be a self-contained module that can be developed, tested independently.
-
+- Notes: 
+For global state management and the navigation should done in the root folder not in module folder. 
+(The store will represent the relationship between the modules)
+To summarize, any functionality that (could/may will) be used in multiple modules should not be here.
 
 Example:
 
@@ -20,21 +23,12 @@ Example:
     /hooks
         example.hook.ts
         index.ts
-    /types
-        example.type.ts (Entity/Model/NetworkResponse/storeState type)
-        index.ts
     /services
         example.service.ts
         index.ts
     /screens
         example.screen.ts (Should use containers, and global components with no styling and children props)
         index.ts
-    /store
-        example.selector.ts
-        example.slice.ts
-        example.state.ts
-        example.slice.ts
-        index.ts (Group all stores, in one store)
     /utils
     index.ts (Export the module)
 

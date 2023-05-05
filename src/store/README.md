@@ -1,2 +1,2 @@
-This folder should only contains UI stores (Theme, User, ...) 
-AND group modules stores together to be extended in the App component provider.
+This folder should contains the source of truth of our app state
+All global states should be here, modules state also should be here.

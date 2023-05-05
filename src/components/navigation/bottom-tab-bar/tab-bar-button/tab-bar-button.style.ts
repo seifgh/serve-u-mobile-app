@@ -17,5 +17,19 @@ export const useStyles = ({isFocused}: Partial<TabBarButtonProps>) => {
     title: {
       color: isFocused ? styledColors.primary : styledColors.textGray,
     },
+    badgeContainer: {
+      position: 'absolute',
+      top: -4,
+      left: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: styledColors.primary,
+      borderRadius: 1000,
+      padding: 8,
+      paddingVertical: 2,
+    },
+    badgeText: {
+      fontSize: 10,
+    },
   });
 };

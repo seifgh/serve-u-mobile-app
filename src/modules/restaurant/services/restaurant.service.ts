@@ -1,6 +1,6 @@
 import {API_ENDPOINTS} from '@src/constants/api.constant';
 import {apiService} from '@src/services/api.service';
-import {RestaurantEntity} from '../types';
+import {RestaurantEntity} from '@src/types';
 
 export const restaurantService = {
   getOne: (id: string) => {

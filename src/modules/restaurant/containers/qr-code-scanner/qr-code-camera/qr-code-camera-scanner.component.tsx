@@ -4,8 +4,8 @@ import {StyledButton} from '@src/components/common/styled-button';
 import {NavigationScreenName, QueryKey} from '@src/constants/enums';
 import {useTimeoutWithClear, useTranslate} from '@src/hooks';
 import {restaurantService} from '@src/modules/restaurant/services';
-import {RestaurantEntity} from '@src/modules/restaurant/types';
-import {RootNavigationProps} from '@src/types';
+import {restaurantStoreActions, restaurantStoreSelectors} from '@src/store';
+import {RestaurantEntity, RootNavigationProps} from '@src/types';
 import {toasterUtil} from '@src/utils';
 import React, {useCallback, useEffect, useState} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
@@ -18,6 +18,8 @@ const QrCodeCameraScanner = () => {
   const t = useTranslate('qrCodeScannerScreen');
   const device = useCameraDevices();
   const [fetchTimeout, clearFetchTimeout] = useTimeoutWithClear();
+  const setRestaurant = restaurantStoreActions.useSetRestaurant();
+  const {restaurant} = restaurantStoreSelectors.useGetState();
   const {refetch} = useQuery<RestaurantEntity>(QueryKey.GET_RESTAURANT, {
     enabled: false,
     queryFn: () => restaurantService.getOne('15'),
@@ -52,9 +54,9 @@ const QrCodeCameraScanner = () => {
     setIsVisible(false);
   };
 
-  const handleFoundRestaurant = (_: RestaurantEntity) => {
+  const handleFoundRestaurant = (data: RestaurantEntity) => {
     setIsVisible(false);
-    navigation.navigate(NavigationScreenName.RESTAURANT_MENU);
+    setRestaurant(data);
   };
 
   // listeners
@@ -67,6 +69,12 @@ const QrCodeCameraScanner = () => {
       fetchTimeout(refetch, 1000);
     }
   }, [isVisible, refetch, fetchTimeout]);
+
+  useEffect(() => {
+    if (restaurant) {
+      navigation.navigate(NavigationScreenName.RESTAURANT_MENU);
+    }
+  }, [navigation, restaurant]);
 
   // styles
   const styles = useStyles();
@@ -90,9 +98,7 @@ const QrCodeCameraScanner = () => {
               device={device.back}
               isActive={true}
             />
-          ) : (
-            <></>
-          )}
+          ) : null}
         </View>
         <Spacer height={12} />
         <StyledText

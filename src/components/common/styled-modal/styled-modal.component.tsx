@@ -17,6 +17,7 @@ const StyledModal: FC<StyledModalProps> = ({
       visible={isVisible}
       animationType={animation}
       onRequestClose={onClose}
+      statusBarTranslucent
       transparent={props.isTransparent}>
       <Pressable style={styles.container} onPress={onClose}>
         {children}

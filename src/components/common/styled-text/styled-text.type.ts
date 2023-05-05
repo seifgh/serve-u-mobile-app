@@ -10,4 +10,5 @@ export type StyledTextProps = {
   align?: TextStyle['textAlign'];
   content: string | string[];
   numberOfLines?: number;
+  fullWidth?: boolean;
 };

@@ -1,4 +1,4 @@
-import {useCurrentRestaurant} from '@src/modules/order/hooks';
+import {restaurantStoreSelectors} from '@src/store';
 import React, {FC} from 'react';
 import {
   BottomTabBarScreenContainer,
@@ -15,7 +15,8 @@ import {
 const RestaurantMenuScreen: FC<
   RootNavigationScreenProps<NavigationScreenName.RESTAURANT_MENU>
 > = () => {
-  const rest = useCurrentRestaurant();
+  const rest = restaurantStoreSelectors.useRestaurant();
+
   if (rest) {
     return (
       <BottomTabBarScreenContainer>

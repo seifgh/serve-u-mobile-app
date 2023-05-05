@@ -21,7 +21,6 @@ const EmptyOrderContainer = () => {
     navigation.navigate(NavigationScreenName.RESTAURANT_STACK);
   };
 
-  // render
   return (
     <ScrollViewContainer alignItems="center" justifyContent="center">
       <Spacer height={32} />

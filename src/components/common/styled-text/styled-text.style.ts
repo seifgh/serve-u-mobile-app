@@ -39,6 +39,7 @@ export const useStyles = (props: StyledTextProps) => {
     weight = 'base',
     lineHeight,
     align = 'left',
+    fullWidth = false,
   } = props;
 
   return StyleSheet.create({
@@ -48,6 +49,7 @@ export const useStyles = (props: StyledTextProps) => {
       fontSize: FONT_SIZES[size],
       fontWeight: FONT_WEIGHT[weight],
       textAlign: align,
+      width: fullWidth ? '100%' : undefined,
       ...props.style,
     },
   });

@@ -5,4 +5,5 @@ export type TabBarButtonProps = {
   icon?: IconComponent;
   title: string;
   onPress: () => void;
+  tabBarBadge: number | string | undefined;
 };

@@ -14,7 +14,12 @@ const StyledCounter: FC<StyledCounterProps> = props => {
       style={styles.container}
       flexDirection="row"
       alignItems="center">
-      <StyledButton onPress={props.onDecrement} size="sm" icon={MinusIcon} />
+      <StyledButton
+        disabled={props.disabled}
+        onPress={props.onDecrement}
+        size="sm"
+        icon={MinusIcon}
+      />
       <Spacer width={8} />
       <StyledText
         weight="semi-bold"
@@ -22,7 +27,12 @@ const StyledCounter: FC<StyledCounterProps> = props => {
         content={props.value.toString()}
       />
       <Spacer width={8} />
-      <StyledButton onPress={props.onIncrement} size="sm" icon={AddIcon} />
+      <StyledButton
+        disabled={props.disabled}
+        onPress={props.onIncrement}
+        size="sm"
+        icon={AddIcon}
+      />
     </FlexContainer>
   );
 };

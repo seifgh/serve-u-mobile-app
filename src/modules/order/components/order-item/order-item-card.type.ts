@@ -1,3 +1,3 @@
 import {OrderItemEntity} from '@src/types';
 
-export type OrderItemCardProps = OrderItemEntity & {};
+export type OrderItemCardProps = OrderItemEntity & {disableEdit?: boolean};

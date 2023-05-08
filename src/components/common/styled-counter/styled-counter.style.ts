@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
 import {StyledCounterProps} from './styled-counter.type';
 
-export const useStyles = (_: StyledCounterProps) => {
+export const useStyles = (props: StyledCounterProps) => {
   return StyleSheet.create({
-    container: {},
+    container: {opacity: props.disabled ? 0.5 : 1},
   });
 };

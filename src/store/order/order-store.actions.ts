@@ -1,3 +1,4 @@
+import {OrderStatus} from '@src/constants/enums';
 import {MenuItemEntity} from '@src/types';
 import {useRecoilState, useSetRecoilState} from 'recoil';
 import {orderStoreAtom} from './order-store.atom';
@@ -40,16 +41,18 @@ export const orderStoreActions = {
         ];
       }
 
-      setState({
-        orders: newOrders,
-      });
+      setState(prev => ({...prev, orders: newOrders}));
     };
   },
 
   useEmptyOrders: () => {
     const setState = useSetRecoilState(orderStoreAtom);
     return () => {
-      setState({orders: []});
+      setState(prev => ({
+        ...prev,
+        orders: [],
+        status: OrderStatus.WAITING_FOR_REQUEST,
+      }));
     };
   },
 
@@ -61,7 +64,8 @@ export const orderStoreActions = {
     return {
       incrementQuantity: () => {
         if (orderItem) {
-          setState({
+          setState(prev => ({
+            ...prev,
             orders: orders.map(_orderItem => {
               if (_orderItem.item.id === menuItemId) {
                 return {
@@ -71,20 +75,22 @@ export const orderStoreActions = {
               }
               return _orderItem;
             }),
-          });
+          }));
         }
       },
       decrementQuantity: () => {
         if (orderItem) {
           if (orderItem.quantity === 1) {
-            setState({
+            setState(prev => ({
+              ...prev,
               orders: orders.filter(_orderItem => {
                 return _orderItem.item.id !== menuItemId;
               }),
-            });
+            }));
             return;
           }
-          setState({
+          setState(prev => ({
+            ...prev,
             orders: orders.map(_orderItem => {
               if (_orderItem.item.id === menuItemId) {
                 return {
@@ -94,9 +100,13 @@ export const orderStoreActions = {
               }
               return _orderItem;
             }),
-          });
+          }));
         }
       },
     };
+  },
+  useSetOrderStatus() {
+    const setState = this.useSetState();
+    return (status: OrderStatus) => setState(prev => ({...prev, status}));
   },
 };

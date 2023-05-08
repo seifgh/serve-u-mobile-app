@@ -37,7 +37,7 @@ const MenuItemCard: FC<MenuItemCardProps> = props => {
           ...IMAGE_ACTUAL_DIMENSIONS,
           src: {
             uri:
-              'https://lh5.googleusercontent.com/p/AF1QipMG2QUTWQfHGard48Q08OFdwjGlIZxnmt5Gl3-d=w114-h114-n-k-no' ||
+              // 'https://lh5.googleusercontent.com/p/AF1QipMG2QUTWQfHGard48Q08OFdwjGlIZxnmt5Gl3-d=w114-h114-n-k-no' ||
               image.path,
           },
         }}

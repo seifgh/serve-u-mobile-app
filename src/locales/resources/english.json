@@ -3,6 +3,12 @@
     "menu": "Menu",
     "order": "Order"
   },
+  "common": {
+    "cancel": "Cancel",
+    "order": "Order",
+    "total": "Total",
+    "edit": "Edit"
+  },
   "qrCodeScannerScreen": {
     "header_text": "1 - Choose your table\n2 - Scan table QR code\n3 - Yup, Choose your order",
     "bottom_text": "Press the button to scan your\n table’s QR code",
@@ -20,10 +26,23 @@
     }
   },
   "orderScreen": {
+    "title": "Order list",
     "empty_order": {
       "title": "Oops!",
       "subtitle": "Some one is hungry",
       "description": "Press the button to discover our\nmenu",
+      "btn_text": "Go to menu"
+    },
+    "requested_order": {
+      "title": "...",
+      "subtitle": "Waiting for confirmation",
+      "description": "Not sure!\nPress the button to edit your order",
+      "btn_text": "Go to menu"
+    },
+    "confirmed_order": {
+      "title": "Yup!",
+      "subtitle": "Order has been confirmed",
+      "description": "We are working on it, just a few minutes\n..........",
       "btn_text": "Go to menu"
     }
   }

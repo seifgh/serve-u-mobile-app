@@ -1,0 +1,6 @@
+export enum OrderStatus {
+  WAITING_FOR_REQUEST,
+  REQUESTED,
+  CONFIRMED,
+  UNDER_TREATMENT,
+}

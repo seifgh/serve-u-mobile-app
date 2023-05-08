@@ -19,6 +19,7 @@ import {OrderItemCardProps} from './order-item-card.type';
 const OrderItemCardComponent: FC<OrderItemCardProps> = props => {
   const {
     item: {id, image, name, price},
+    disableEdit,
     quantity,
   } = props;
 
@@ -42,7 +43,7 @@ const OrderItemCardComponent: FC<OrderItemCardProps> = props => {
           ...IMAGE_ACTUAL_DIMENSIONS,
           src: {
             uri:
-              'https://lh5.googleusercontent.com/p/AF1QipMG2QUTWQfHGard48Q08OFdwjGlIZxnmt5Gl3-d=w114-h114-n-k-no' ||
+              // 'https://lh5.googleusercontent.com/p/AF1QipMG2QUTWQfHGard48Q08OFdwjGlIZxnmt5Gl3-d=w114-h114-n-k-no' ||
               image.path,
           },
         }}
@@ -61,6 +62,7 @@ const OrderItemCardComponent: FC<OrderItemCardProps> = props => {
         <Spacer height={12} />
 
         <StyledCounter
+          disabled={disableEdit}
           onIncrement={incrementQuantity}
           onDecrement={decrementQuantity}
           value={quantity}

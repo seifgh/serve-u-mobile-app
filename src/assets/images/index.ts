@@ -17,3 +17,15 @@ export const emptyOrderImageAsset: ImageAsset = {
   actualWidth: 300,
   actualHeight: 164,
 };
+
+export const requestedOrderImageAsset: ImageAsset = {
+  src: require('./requested-order.png'),
+  actualWidth: 626,
+  actualHeight: 458,
+};
+
+export const confirmedOrderImageAsset: ImageAsset = {
+  src: require('./confirmed-order.png'),
+  actualWidth: 1446,
+  actualHeight: 1341,
+};

@@ -6,17 +6,28 @@ import {
   StyledText,
 } from '@src/components';
 import {StyledButton} from '@src/components/common/styled-button';
+import {OrderStatus} from '@src/constants/enums';
+import {useTranslate} from '@src/hooks';
 import {orderStoreActions, orderStoreSelectors} from '@src/store';
 import React, {Fragment} from 'react';
 import {OrderItemCardComponent} from '../../components/order-item';
 
 const OrderCartItemsContainer = () => {
+  // utils
+  const t = useTranslate();
+  // state
   const orders = orderStoreSelectors.useOrders();
   const totalPrice = orderStoreSelectors.useTotalPrice();
   const emptyOrders = orderStoreActions.useEmptyOrders();
+  const setOrderStatus = orderStoreActions.useSetOrderStatus();
 
+  // actions
   const handleCancelClick = () => {
     emptyOrders();
+  };
+
+  const handleOrderBtnPress = () => {
+    setOrderStatus(OrderStatus.REQUESTED);
   };
 
   return (
@@ -26,7 +37,7 @@ const OrderCartItemsContainer = () => {
         <FlexContainer spacing={'md'} flexDirection="row">
           <StyledText
             fullWidth
-            content={'Order list'}
+            content={t('orderScreen:title')}
             size="2xl"
             weight="semi-bold"
           />
@@ -42,7 +53,7 @@ const OrderCartItemsContainer = () => {
 
         <FlexContainer flexDirection="row" alignItems="center">
           <StyledText
-            content={'TOTAL - '}
+            content={`${t('common:total')} - `}
             size="lg"
             weight="semi-bold"
             color="textGray"
@@ -50,13 +61,19 @@ const OrderCartItemsContainer = () => {
           <PriceTag styledTextProps={{size: 'lg'}} content={totalPrice} />
         </FlexContainer>
         <Spacer height={24} />
-        <StyledButton color="primary" content="Order" isFlat size="md" />
+        <StyledButton
+          onPress={handleOrderBtnPress}
+          color="primary"
+          content={t('common:order')}
+          isFlat
+          size="md"
+        />
         <Spacer height={8} />
         <StyledButton
           onPress={handleCancelClick}
           color="background"
           textColor="error"
-          content="Cancel"
+          content={t('common:cancel')}
           isFlat
           size="md"
         />

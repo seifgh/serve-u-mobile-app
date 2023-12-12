@@ -51,7 +51,9 @@ class ApiService implements IRestApiService {
       params: URIUtil.formatQueryParams(
         schemaUtil.mapRecordBySchema(queryParams, endpoint.queryParamsSchema),
       ),
-      data: schemaUtil.mapRecordBySchema(body, endpoint.bodySchema),
+      // data: schemaUtil.mapRecordBySchema(body, endpoint.bodySchema),
+      data: body,
+      method: endpoint.method,
     };
   }
 }

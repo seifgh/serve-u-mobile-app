@@ -4,8 +4,9 @@ import {StyledButton} from '@src/components/common/styled-button';
 import {ScrollViewContainer} from '@src/components/containers/scroll-view-container';
 import {OrderStatus} from '@src/constants/enums';
 import {useStyledSizes, useTimeout, useTranslate} from '@src/hooks';
-import {orderStoreActions} from '@src/store';
+import {orderStoreActions, orderStoreSelectors} from '@src/store';
 import React, {useEffect} from 'react';
+import {ordersService} from '../../services/orders.service';
 
 const RequestedOrderContainer = () => {
   // utils
@@ -16,6 +17,7 @@ const RequestedOrderContainer = () => {
   const setTimeout = useTimeout();
   // state
   const setOrderStatus = orderStoreActions.useSetOrderStatus();
+  const orders = orderStoreSelectors.useOrders();
 
   // actions
   const handleCancelClick = () => {
@@ -24,9 +26,11 @@ const RequestedOrderContainer = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      ordersService.sendOrder(orders, 'T1');
+      console.log('CALLED');
       setOrderStatus(OrderStatus.CONFIRMED);
-    }, 5000);
-  }, [setTimeout, setOrderStatus]);
+    }, 3000);
+  }, [setTimeout, setOrderStatus, orders]);
 
   return (
     <ScrollViewContainer alignItems="center" justifyContent="center">
